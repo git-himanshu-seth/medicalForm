@@ -1,0 +1,88 @@
+{
+    "fields": [
+        {
+            "name": "problemsList",
+            "type": "text",
+            "placeholder": "",
+            "label": "if you have problems with pain/aches,stiffness,weakness,or functional problems,describe this/these below. (List the symptoms in descending order with the most troublesome first)"
+        },
+        {
+            "name": "problem",
+            "type": "radio",
+            "label": "Have you been diagnosed with this problems?",
+            "options": [
+                "Not Relavent",
+                "Yes",
+                "No"
+            ]
+        },
+        {
+            "name": "physicalTrauma",
+            "type": "radio",
+            "label": "Did the problem start after a physical trauma?",
+            "options": [
+                "Not Relavent",
+                "Yes",
+                "No"
+            ]
+        },
+        {
+            "name": "mentalTrauma",
+            "type": "radio",
+            "label": "Did the problem start after a mental trauma?",
+            "options": [
+                "Not Relavent",
+                "Yes",
+                "No"
+            ]
+        },
+        {
+            "name": "problemOccurs",
+            "type": "radio",
+            "label": "How often do you experince the problem?",
+            "options": [
+                "Not Relavent",
+                "Daily",
+                "Several Times/week",
+                "A few times/month",
+                "A few times/year"
+            ]
+        },
+        {
+            "name": "problemHappened",
+            "type": "checkbox",
+            "label": "When do you experience the problem?",
+            "options": [
+                "Not Relavent",
+                "When lying down",
+                "While sitting",
+                "Under standing",
+                "in Walking"
+            ]
+        },
+        {
+            "name": "otherProblems",
+            "type": "textarea",
+            "label": "otherProblems",
+            "placeholder": "Other? For example in rotaions, side bends, wings strains, working with the arms above the head"
+        },
+        {
+            "name": "rateScale",
+            "type": "radio",
+            "label": "How intense is the experience of the problem on average no a 0-10 scale",
+            "options": [
+                "1",
+                "2",
+                "3",
+                "4",
+                "5",
+                "6",
+                "7",
+                "8",
+                "8",
+                "9",
+                "10"
+            ]
+        }
+    ]
+}

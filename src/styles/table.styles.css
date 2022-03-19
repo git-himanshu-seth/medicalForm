@@ -1,0 +1,28 @@
+.container {
+  padding: 40px;
+  background-color: white;
+  height: auto;
+  background-color: rgba(215, 56, 230, 0.678);
+  margin: 15px;
+}
+table {
+  width: 50%;
+  margin: 30px 20px;
+  background: rgb(140, 187, 228);
+}
+table,
+th,
+td {
+  border: 5px solid black;
+  border-collapse: collapse;
+  width: auto;
+  padding: 10px;
+  text-align: center;
+}
+th,
+td {
+  padding: 4px;
+  text-align: left;
+  padding: 10px;
+  text-align: center;
+}
