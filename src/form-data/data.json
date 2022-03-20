@@ -63,7 +63,7 @@
         {
             "name": "otherProblems",
             "type": "textarea",
-            "label": "otherProblems",
+            "label": "",
             "placeholder": "Other? For example in rotaions, side bends, wings strains, working with the arms above the head"
         },
         {

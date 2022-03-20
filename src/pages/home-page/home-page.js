@@ -5,9 +5,19 @@ import formFields from "../../form-data/data.json";
 import { initFormFieldValues } from "../../utils/functions";
 import { setSummeryAction } from "../../redux/reducer/summary.action";
 import { connect, useSelector } from "react-redux";
+import AddCircleIcon from "@material-ui/icons/AddCircle";
+import {
+  InputLabel,
+  Paper,
+  FormControl,
+  Container,
+  ButtonGroup,
+  Button,
+} from "@material-ui/core";
 import "../../styles/form.styles.css";
 function HomePage(props) {
   const data = useSelector((state) => state.summary.summaryData);
+  console.log(data);
   const [formData, setFormData] = useState([
     initFormFieldValues(formFields.fields),
   ]);
@@ -49,43 +59,34 @@ function HomePage(props) {
     switch (type) {
       case "radio":
         return (
-          <div>
-            <RadioField
-              name={name}
-              handleChange={(e) => handleChange(formIdx, name, e.target.value)}
-              options={otherFieldProps.options}
-              selected={data[name]}
-            />
-          </div>
+          <RadioField
+            handleChange={(e) => handleChange(formIdx, name, e.target.value)}
+            options={otherFieldProps.options}
+            selected={data[name]}
+          />
         );
 
       case "checkbox":
         return (
-          <div>
-            {" "}
-            <CheckBoxField
-              formIdx={formIdx}
-              name={name}
-              handleChange={handleCheckBoxChange}
-              options={otherFieldProps.options}
-              selected={data[name]}
-            />{" "}
-          </div>
+          <CheckBoxField
+            formIdx={formIdx}
+            name={name}
+            handleChange={handleCheckBoxChange}
+            options={otherFieldProps.options}
+            selected={data[name]}
+          />
         );
 
       default:
         inputField = (
-          <div>
-            {" "}
-            <input
-              type={type}
-              placeholder={placeholder}
-              name={name}
-              value={data[name]}
-              onChange={(e) => handleChange(formIdx, name, e.target.value)}
-              className={"textArea"}
-            />
-          </div>
+          <input
+            type={type}
+            placeholder={placeholder}
+            name={name}
+            value={data[name]}
+            onChange={(e) => handleChange(formIdx, name, e.target.value)}
+            className={name !== "problemsList" ? "textArea" : "textField"}
+          />
         );
     }
     return inputField;
@@ -93,49 +94,88 @@ function HomePage(props) {
 
   const getForm = (data, formIdx) => {
     return (
-      <form key={formIdx} style={{ margin: "14px 7px" }}>
-        {formFields.fields.map((fieldData, idx) => {
-          let inputField = getInputField(fieldData, data, formIdx);
-          return (
-            <div
-              key={idx}
-              className={"fields"}
-              style={{
-                display: fieldData.name === "problemsList" ? "" : "flex",
-              }}>
-              <label>{fieldData.label}</label>
-              <span>{inputField}</span>
-            </div>
-          );
-        })}
-      </form>
+      <Paper
+        elevation={9}
+        style={{
+          marginTop: "20px",
+          border: "1px solid grey 0.5",
+          padding: "36px 10px",
+          borderRadius: "12px",
+        }}>
+        <FormControl
+          key={formIdx}
+          style={{ margin: "14px 7px", display: "contents" }}>
+          {formFields.fields.map((fieldData, idx) => {
+            let inputField = getInputField(fieldData, data, formIdx);
+            return (
+              <div
+                key={idx}
+                style={{
+                  display: fieldData.name === "problemsList" ? "" : "flex",
+                }}>
+                <span style={{ margin: "20px 15px" }}>
+                  <InputLabel
+                    htmlFor='my-input'
+                    style={{ display: "contents" }}>
+                    {fieldData.label}
+                  </InputLabel>
+                </span>
+                <span style={{ margin: "20px 15px", width: "500px" }}>
+                  <InputLabel
+                    htmlFor='my-input'
+                    style={{ display: "contents", marginRight: "5px" }}>
+                    {inputField}
+                  </InputLabel>
+                </span>
+              </div>
+            );
+          })}
+        </FormControl>
+      </Paper>
     );
   };
 
   return (
     <div style={{ margin: "20px 9px" }}>
-      <div style={{ color: "blue" }}>
-        <strong>Pain & Functional Description</strong>
+      <div>
+        <div style={{ color: "blue" }}>
+          <strong>Pain & Functional Description</strong>
+        </div>
+        <div>
+          <p>
+            The description of the current situation gives your Optimum Trainer
+            a picture of and clues of the underling causes of your problems
+          </p>
+        </div>
+        <Container
+          maxWidth='md'
+          style={{
+            padding: "20px 10px",
+          }}>
+          {formData.map((data, formIdx) => getForm(data, formIdx))}
+        </Container>
       </div>
       <div>
-        <p>
-          The description of the current situation gives your Optimum Trainer a
-          picture of and clues of the underling causes of your problems
-        </p>
-      </div>
-
-      {formData.map((data, formIdx) => getForm(data, formIdx))}
-      <button onClick={handleAppendFields} className={"newForm"}>
-        +
-      </button>
-      <hr style={{ marginTop: "-9px" }} />
-
-      <div>
-        {" "}
-        <button className={"success"}>Back</button>
-        <button onClick={handleAction} className={"success"}>
-          Next
-        </button>
+        <ButtonGroup
+          variant='contained'
+          color='primary'
+          aria-label='contained primary button group'
+          style={{ boxShadow: "none" }}>
+          <AddCircleIcon onClick={handleAppendFields} color='primary' />
+        </ButtonGroup>
+        <hr style={{ color: "grey" }} />
+        <ButtonGroup
+          variant='contained'
+          color='primary'
+          aria-label='contained primary button group'>
+          <Button className={"success"}>Back</Button>
+          <Button
+            onClick={handleAction}
+            className={"success"}
+            style={{ marginLeft: "5px", border: "none" }}>
+            Next
+          </Button>
+        </ButtonGroup>
       </div>
     </div>
   );

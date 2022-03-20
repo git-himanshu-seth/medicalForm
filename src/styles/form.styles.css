@@ -6,10 +6,10 @@
 .success {
   background-color: rgb(83, 207, 238);
   width: 150px;
-  height: 20px;
+  height: 30px;
   border: none;
   color: white;
-  margin: 0 10px;
+  margin: 10px 0px;
   font-size: 10px;
 }
 .newForm {
@@ -31,4 +31,8 @@
   width: 250px;
   height: 50px;
   margin: 0 20px;
+}
+.textField {
+  width: 95%;
+  height: 50px;
 }

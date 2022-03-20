@@ -1,7 +1,7 @@
 import "./App.css";
 import HomePage from "./pages/home-page/home-page";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import Summary from "./components/summary/summary";
+import Summary from "./pages/summary/summary";
 
 function App() {
   let navigate = useNavigate();
